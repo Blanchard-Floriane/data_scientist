@@ -70,7 +70,7 @@ def number_of_size
       new_hash[journalist_size] += 1
     end
   end
-  puts new_hash
+  puts new_hash.sort.to_h
 end
 
 number_of_size
