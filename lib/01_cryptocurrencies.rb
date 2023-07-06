@@ -6,12 +6,17 @@ crypto_values = ["6558.07", "468.95", "0.487526", "762.84", "8.86", "85.26", "0.
 
 @crypto_hash = crypto_names.zip(crypto_values).to_h
 
-crypto_max = @crypto_hash.group_by{|k, v| v.to_f}.max[1] #Affiche le ou les keys dont la valeur est max
-puts "Exo. 1"
-puts "Voici la ou les crypto.s avec la plus grande valeur : #{crypto_max}."
+def exo_1
+  crypto_max = @crypto_hash.group_by{|k, v| v.to_f}.max[1] #Affiche le ou les keys dont la valeur est max
+  puts "Exo. 1"
+  puts "Voici la ou les crypto.s avec la plus grande valeur : #{crypto_max}."
+end
 
-crypto_min = @crypto_hash.group_by{|k, v| v.to_f}.min[1]
-p "Voici la ou les crypto.s avec la plus petite valeur : #{crypto_min}."
+def exo_2
+  crypto_min = @crypto_hash.group_by{|k, v| v.to_f}.min[1]
+  puts "Exo. 2"
+  p "Voici la ou les crypto.s avec la plus petite valeur : #{crypto_min}."
+end
 
 def lower_cryptos
   array_low = []
@@ -24,6 +29,7 @@ def lower_cryptos
 end
 
 def exo_3
+  puts "Exo. 3"
   puts "Voici les devises dont le cours est inférieur à 6 000 : "
   lower_cryptos.each do |crypto|
     puts crypto.first
@@ -32,9 +38,42 @@ end
 
 def exo_4
   max_lower_crypto = lower_cryptos.to_h.max_by{|k,v| v.to_f}
+  puts "Exo. 4"
   puts "Voici la devise la plus chère parmi celles dont le cour est inférieur à 6 000 : #{max_lower_crypto.first} dont la valeur est #{max_lower_crypto.last}."
 end
 
-exo_3
-exo_4
+def menu
+  puts
+  puts "Pour lancer un exercice, saisir le chiffre correspondant:"
+  puts " 1 - Obtenez la ou les cryptos avec la plus grosse valeur"
+  puts " 2 - Obtenez la ou les cryptos avec la plus petite valeur"
+  puts " 3 - Affichez les devises dont le cours est inférieur à 6000"
+  puts " 4 - Affichez la devise la plus chère parmi celles dont le cours est inférieur à 6000"
+  puts " 5 - Fin de programme"
+  print "Quel numéro d'exercice choisissez-vous (1/2/3/4/5) :"
+  choice = gets.chomp.to_i
+  if choice in (1..5)
+    if choice == 1 
+      exo_1
+      menu
+    elsif choice == 2
+      exo_2
+      menu
+    elsif choice == 3
+      exo_3
+      menu
+    elsif choice == 4
+      exo_4
+      menu
+    elsif choice == 5
+      puts "A bientôt, tête de pomme et petite poire"  
+    end
+  else
+    puts
+    puts "Andouille, tu vas mettre un chiffre correcte !"
+    puts
+    menu
+  end
+end
 
+menu
