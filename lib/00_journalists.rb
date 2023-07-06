@@ -10,18 +10,15 @@ end
 $length_total = $journalists_list_init.length #send us the number of handle into this array
 puts "La longueur totale de notre tableau est de : #{$length_total}."
 
-puts $journalists_list_init.min{|a,b| a.size <=> b.size} #to force a min to use sizes rather then their natural order wich use alphabetic order given them a value
-
-# handle_characters(record)
+puts $journalists_list_init.min{|a,b| a.size <=> b.size}
 
 def cleaning_array
   (0..($length_total-1)).each do |i|
     journalists_list_current[i] = journalists_list_current[i].delete "@"
-    #puts journalists_list[i]
   end
 end
 
-def counting_5
+def counting_5 #we can also use the same method with count 
   num_of_5=0
   (0..($length_total-1)).each do |i|
     if $journalists_list_current[i].size == 5
