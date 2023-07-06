@@ -49,7 +49,10 @@ def uppercase_counting
   puts "Il y a #{num_of_uppercase} handle qui commencent par une majuscule"
   return num_of_uppercase
 end
-
 uppercase_counting
 
-puts $journalists_list_init.sort_by { |word| word.downcase }
+puts $journalists_list_init.sort_by { |journalist| journalist.downcase }
+
+puts $journalists_list_init.sort_by { |journalist| journalist.length }
+
+puts "@epenser se trouve en position #{$journalists_list_init.index("@epenser")} dans notre array."
