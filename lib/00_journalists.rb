@@ -7,9 +7,32 @@ def handle_characters(twitter)
   return size
 end
 
-length_total = $journalists_list.length #send us the number of handle into this array
-puts "La longueur totale de notre tableau est de : #{length_total}."
+$length_total = $journalists_list.length #send us the number of handle into this array
+puts "La longueur totale de notre tableau est de : #{$length_total}."
 
 puts $journalists_list.min{|a,b| a.size <=> b.size} #to force a min to use sizes rather then their natural order wich use alphabetic order given them a value
 
 # handle_characters(record)
+
+def cleaning_array
+  (0..($length_total-1)).each do |i|
+  $journalists_list[i] = $journalists_list[i].delete "@"
+  #puts $journalists_list[i]
+  end
+end
+
+def counting_5
+  num_of_5=0
+  (0..($length_total-1)).each do |i|
+    if $journalists_list[i].size == 5
+      puts $journalists_list[i]
+      num_of_5 += 1
+    end
+  end
+  return num_of_5
+end
+def perform
+  cleaning_array
+  puts "Le tableau contient #{counting_5} éléments de longueur 5 caractères sans le @"
+end
+perform
