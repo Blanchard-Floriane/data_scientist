@@ -56,3 +56,21 @@ puts $journalists_list_init.sort_by { |journalist| journalist.downcase }
 puts $journalists_list_init.sort_by { |journalist| journalist.length }
 
 puts "@epenser se trouve en position #{$journalists_list_init.index("@epenser")} dans notre array."
+
+
+puts $journalists_list_init.count {|journalist| journalist.length}
+
+def number_of_size
+  new_hash = {}
+  $journalists_list_init.each do |journalist|
+    journalist_size = journalist.length - 1
+    if new_hash[journalist_size].nil?
+      new_hash[journalist_size] = 1
+    else
+      new_hash[journalist_size] += 1
+    end
+  end
+  puts new_hash
+end
+
+number_of_size
