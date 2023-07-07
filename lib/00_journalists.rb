@@ -12,28 +12,19 @@ puts "La longueur totale de notre tableau est de : #{$length_total}."
 
 puts $journalists_list_init.min{|a,b| a.size <=> b.size}
 
-def cleaning_array
-  (0..($length_total-1)).each do |i|
-    journalists_list_current[i] = journalists_list_current[i].delete "@"
+def five_string
+  arrobase_less = $journalists_list_init.each do |string| 
+    string.tr("@", '') 
   end
-end
-
-def counting_5 #we can also use the same method with count 
-  num_of_5=0
-  (0..($length_total-1)).each do |i|
-    if $journalists_list_current[i].size == 5
-      puts $journalists_list_current[i]
+  num_of_5 = 0
+  arrobase_less.each do |i|
+    if i.length == 5
       num_of_5 += 1
     end
   end
-  return num_of_5
+  puts "Le tableau contient #{num_of_5} éléments de longueur 5 caractères sans le @"
 end
-
-def perform
-  cleaning_array
-  puts "Le tableau contient #{counting_5} éléments de longueur 5 caractères sans le @"
-end
-#perform
+five_string
 
 def uppercase_counting
   num_of_uppercase = 0
@@ -46,16 +37,16 @@ def uppercase_counting
   puts "Il y a #{num_of_uppercase} handle qui commencent par une majuscule"
   return num_of_uppercase
 end
-uppercase_counting
+#uppercase_counting
 
-puts $journalists_list_init.sort_by { |journalist| journalist.downcase }
+#puts $journalists_list_init.sort_by { |journalist| journalist.downcase }
 
-puts $journalists_list_init.sort_by { |journalist| journalist.length }
+#puts $journalists_list_init.sort_by { |journalist| journalist.length }
 
-puts "@epenser se trouve en position #{$journalists_list_init.index("@epenser")} dans notre array."
+#puts "@epenser se trouve en position #{$journalists_list_init.index("@epenser")} dans notre array."
 
 
-puts $journalists_list_init.count {|journalist| journalist.length}
+#puts $journalists_list_init.count {|journalist| journalist.length}
 
 def number_of_size
   new_hash = {}
@@ -70,4 +61,4 @@ def number_of_size
   puts new_hash.sort.to_h
 end
 
-number_of_size
+#number_of_size
